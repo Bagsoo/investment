@@ -43,7 +43,10 @@ export default function HeroSection() {
       }
 
       // Draw chart line
-      const visiblePoints = Math.floor((frame / 100) * numPoints);
+      const visiblePoints = Math.min(
+        Math.floor((frame / 100) * numPoints),
+        points.length
+      );
       if (visiblePoints < 2) {
         frame++;
         requestAnimationFrame(animate);

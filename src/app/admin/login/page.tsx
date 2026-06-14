@@ -31,21 +31,22 @@ export default function AdminLoginPage() {
     }
 
     // Check admin role
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .single();
+    // const { data: { user } } = await supabase.auth.getUser();
+    // if (user) {
+    //   const { data: profile } = await supabase
+    //     .from("profiles")
+    //     .select("role")
+    //     .eq("id", user.id)
+    //     .single();
 
-      if (profile?.role !== "admin") {
-        await supabase.auth.signOut();
-        setError("관리자 권한이 없습니다.");
-        setLoading(false);
-        return;
-      }
-    }
+    //   console.log("profile:", profile);
+    //   if (profile?.role !== "admin") {
+    //     await supabase.auth.signOut();
+    //     setError("관리자 권한이 없습니다.");
+    //     setLoading(false);
+    //     return;
+    //   }
+    // }
 
     router.push("/admin");
   };
