@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
-import { Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
+import { IBM_Plex_Sans_KR } from "next/font/google";
 import "./globals.css";
 
-const notoSerifKR = Noto_Serif_KR({
+const ibmPlexSansKRDisplay = IBM_Plex_Sans_KR({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
-const notoSansKR = Noto_Sans_KR({
+const ibmPlexSansKRBody = IBM_Plex_Sans_KR({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-body",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://answerinvestment.co.kr"
   ),
@@ -61,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${notoSerifKR.variable} ${notoSansKR.variable}`}>
+    <html lang="ko" className={`${ibmPlexSansKRDisplay.variable} ${ibmPlexSansKRBody.variable}`}>
       <body className="font-body bg-brand-navy text-white antialiased">
         {children}
       </body>
